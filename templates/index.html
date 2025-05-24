@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Café</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <div id="scoreboard">
+        ✅ Correct: <span id="correct-count">0</span> |
+        ❌ Wrong: <span id="wrong-count">0</span>
+    </div>
+
+    <h1>☕ Quiz Café</h1>
+    <div id="rules-box">
+        <strong>🎮 Rules:</strong><br>
+        ✔️ Answer 10 questions correctly = get 1 hint each<br>
+        ❌ 20 wrong answers = Game Over
+    </div>
+
+    <div id="quiz-container">
+        <p id="question">Loading...</p>
+        <ul id="choices"></ul>
+        <p id="result"></p>
+    </div>
+
+    <div id="loader-overlay">
+        <div class="loader-text">LOADING...</div>
+    </div>
+
+    <div id="character-box">
+        <img src="/static/character.png" alt="Troll Character" id="character-img">
+        <div id="character-dialog">...</div>
+    </div>
+
+    <input type="text" id="secret-input" style="position:absolute; left:-9999px;"> <!-- ลบ style ออก -->
+    <pre id="secret-output" style="display:none;"></pre>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('secret-input');
+            const output = document.getElementById('secret-output');
+
+            input.addEventListener('input', () => {
+                const code = input.value.trim().toUpperCase();
+                if (code === 'AAAABBCCDDD') {
+                    output.style.display = 'block';
+                    output.textContent = '✅ Go to Layer Blue 5!';
+                    output.style.color = 'lime';
+                } else {
+                    output.style.display = 'block';
+                    output.textContent = '❌ Incorrect answer~';
+                    output.style.color = 'red';
+                }
+            });
+
+            input.focus();
+        });
+    </script>
+</body>
+</html>

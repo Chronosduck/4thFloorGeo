@@ -1,0 +1,198 @@
+/* Base Layout */
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f8f3e6;
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    color: #4e3d28;
+    margin: 0;
+    padding: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+body.correct {
+    background-color: #d4edda; /* เขียวอ่อนแบบ "success" */
+    transition: background-color 0.3s ease;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #6b4f2c;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Scoreboard */
+#scoreboard {
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    background-color: #fff8ee;
+    border: 2px solid #d8c3a5;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* Quiz Container */
+#quiz-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+#question {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+ul#choices {
+    list-style: none;
+    padding: 0;
+}
+
+ul#choices li {
+    background-color: #fdf1dc;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid #e6d3b3;
+    font-size: 1.1rem;
+}
+
+ul#choices li:hover {
+    background-color: #f4e0c6;
+    transform: scale(1.02);
+}
+
+/* Result Text */
+#result {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #a35638;
+    text-align: center;
+}
+
+/* Loading Overlay */
+#loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#loader-overlay.show {
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    visibility: visible;
+    opacity: 1;
+}
+
+.loader-text {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 4rem;
+    color: #ffd700;
+    letter-spacing: 6px;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+    text-shadow: 3px 3px 8px red;
+}
+#rules-box {
+    position: fixed;
+    top: 1rem;
+    left: 1.5rem;
+    background-color: #fff8ee;
+    border: 2px solid #d8c3a5;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    font-size: 0.95rem;
+    max-width: 220px;
+    color: #4e3d28;
+    line-height: 1.4;
+    z-index: 1000;
+}
+
+
+/* Animations */
+@keyframes pulse {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(1.05); opacity: 0.7; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Stress Effects */
+body.stress {
+    background-color: #ffe100 !important; /* Yellow */
+    transition: background-color 0.2s ease;
+}
+
+body.wrong {
+    background-color: #ff0000 !important; /* Red */
+    transition: background-color 0.2s ease;
+}
+#character-box {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    z-index: 1000;
+}
+
+#character-img {
+    width: 80px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+#character-dialog {
+    background-color: #fff8ee;
+    border: 2px solid #d8c3a5;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    max-width: 200px;
+    color: #4e3d28;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+/* Fade in dialog bubble */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Animate character speaking (bounce up a bit) */
+#character-box.speaking {
+    animation: bounceSpeak 0.6s ease;
+}
+
+/* Keyframes for bounce */
+@keyframes bounceSpeak {
+    0% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
